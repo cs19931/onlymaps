@@ -1,0 +1,70 @@
+name: Main CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  test-and-coverage:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13", "3.14"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set PYTHONPATH
+        run: |
+          echo "PYTHONPATH=${GITHUB_WORKSPACE}/src" >> $GITHUB_ENV
+
+      - name: Install native dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install libmariadb3 libmariadb-dev
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install .[all,dev]
+
+      - name: Generate async API
+        run: invoke asyncio
+
+      - name: Check source code
+        run: invoke check
+
+      - name: Run tests
+        run: |
+          python -m coverage run -m pytest -vvv -s
+          python -m coverage lcov
+
+      - name: Python ${{ matrix.python-version }} Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: coverage.lcov
+          flag-name: python-${{ matrix.python-version }}-run
+          parallel: true
+
+
+  finish:
+
+    needs: test-and-coverage
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Update Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.github_token }}
+        parallel-finished: true
