@@ -30,8 +30,8 @@ class TestConnectionPool:  # <replace:class TestAsyncConnectionPool:>
     Tests the `ConnectionPool` class.
     """
 
-    def test_connection_pool_transaction_on_uncommited_changes_check_by_pool(  # <async>
-        self, pool: ConnectionPool, connection: Connection, executor: Executor, uid: int
+    def test_connection_pool_transaction_on_uncommitted_changes_check_by_pool(  # <async>
+        self, pool: ConnectionPool, executor: Executor, uid: int
     ) -> None:
         """
         Tests whether a connection from a pool is unable to see changes
@@ -57,7 +57,7 @@ class TestConnectionPool:  # <replace:class TestAsyncConnectionPool:>
             while continue_counter < 1:
                 sleep(0.1)  # <await>
             try:
-                result = connection.fetch_one_or_none(  # <await>
+                result = pool.fetch_one_or_none(  # <await>
                     int, SQL.SELECT_FROM_TEST_TABLE(pool.driver), uid
                 )
             except Exception as exc:
@@ -69,7 +69,7 @@ class TestConnectionPool:  # <replace:class TestAsyncConnectionPool:>
         executor.submit(fn_2)
         executor.wait()  # <await>
 
-        # SQL Server implements READ COMMITED isolation via
+        # SQL Server implements READ COMMITTED isolation via
         # locking, not MVCC, therefore the query should fail
         # instead due to the lock held on the table.
         if pool.driver == Driver.SQL_SERVER:

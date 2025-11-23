@@ -278,7 +278,7 @@ class TestDatabase:  # <replace:class TestAsyncDatabase:>
                 == uid
             )
 
-    def test_database_transaction_on_uncommited_changes(  # <async>
+    def test_database_transaction_on_uncommitted_changes(  # <async>
         self, db: Database, connection_B: Connection, uid: int
     ) -> None:
         """
@@ -287,7 +287,7 @@ class TestDatabase:  # <replace:class TestAsyncDatabase:>
         """
         with db.transaction():  # <async>
             db.exec(SQL.INSERT_INTO_TEST_TABLE(db.driver), uid)  # <await>
-            # SQL Server implements READ COMMITED isolation via
+            # SQL Server implements READ COMMITTED isolation via
             # locking, not MVCC, therefore the query should fail
             # instead due to the lock held on the table.
             if db.driver == Driver.SQL_SERVER:
@@ -303,7 +303,7 @@ class TestDatabase:  # <replace:class TestAsyncDatabase:>
                     is None
                 )
 
-    def test_database_transaction_on_commited_changes(  # <async>
+    def test_database_transaction_on_committed_changes(  # <async>
         self, db: Database, connection: Connection, uid: int
     ) -> None:
         """
